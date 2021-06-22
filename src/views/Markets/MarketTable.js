@@ -6,6 +6,7 @@ import BasicTable from '../../components/BasicTable';
 import { marketData } from '../../utils/constants';
 
 function MarketTable({ activePrice, history }) {
+  
   const data = useMemo(
     () => marketData,
     []

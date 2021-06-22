@@ -96,6 +96,11 @@ function Header() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse>
           <Nav>
+            <NavLink 
+              to='/nfts'
+              className="menuItem"
+             >NFT DROPS
+            </NavLink>
             <NavLink
               to='/markets'
               className="menuItem"

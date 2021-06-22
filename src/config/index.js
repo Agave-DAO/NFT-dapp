@@ -6,7 +6,7 @@ const web3Provider = process.env.REACT_APP_NETWORK_ID === '1' ?
 
 const config = {
   web3Provider: web3Provider,
-  networkId: process.env.REACT_APP_NETWORK_ID || '1',
+  networkId: process.env.REACT_APP_NETWORK_ID || '4',
 };
 
 module.exports = config;
