@@ -84,11 +84,6 @@ const HeaderWrapper = styled.div`
   }
 `;
 
-
-
-const onConnectAccount = () => {
-  alert('connecting account');
-}
 function Header() {
   const address = useSelector(state => state.authUser.address);
 

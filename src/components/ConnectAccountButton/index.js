@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { NotificationManager } from 'react-notifications';
 import { web3 } from '../../utils/web3';

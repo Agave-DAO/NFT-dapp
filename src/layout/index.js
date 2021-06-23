@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { NotificationContainer } from 'react-notifications';
 import Header from '../components/Header';
 import Button from '../components/Button';
-import UnlockWallet from '../components/UnlockWallet';
 import styled from 'styled-components';
 import background from '../assets/image/layout-background.svg'
 
@@ -68,7 +67,7 @@ const BackgroundImage = styled.img`
 `;
 
 function Layout({ children }) {
-  const address = useSelector(state => state.authUser.address);
+  // const address = useSelector(state => state.authUser.address);
 
   return (
     <LayoutWrapper>
