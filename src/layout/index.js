@@ -5,11 +5,12 @@ import Header from '../components/Header';
 import Button from '../components/Button';
 import UnlockWallet from '../components/UnlockWallet';
 import styled from 'styled-components';
+import background from '../assets/image/layout-background.svg'
 
 const LayoutWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
-  background: rgb(241, 241, 243);
+  background: ${(props) => props.theme.color.layoutColor};
   display: flex;
   flex-direction: column;
   flex: 1 1 0%;
@@ -26,7 +27,7 @@ const LayoutWrapper = styled.div`
     z-index: 2;
 
     .screen-top-content {
-      background-color: ${props => props.theme.color.grey[200]};
+      background-color: ${props => props.theme.color.agGreen[200]};
       padding: 7px 20px 10px;
       position: relative;
       box-sizing: border-box;
@@ -38,7 +39,7 @@ const LayoutWrapper = styled.div`
         left: 0px;
         height: 90px;
         width: 100%;
-        background-color: ${props => props.theme.color.grey[200]};
+        background-color: ${props => props.theme.color.agGreen[200]};
         transition: all 0.1s ease-in-out 0s;
         z-index: -1;
       }
@@ -58,27 +59,33 @@ const LayoutWrapper = styled.div`
   }
 `;
 
-function Layout({children}) {
+const BackgroundImage = styled.img`
+  height: 60%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  transform: translateY(50px);
+`;
+
+function Layout({ children }) {
   const address = useSelector(state => state.authUser.address);
 
   return (
     <LayoutWrapper>
-      {!address ? (
-        <UnlockWallet />
-      ) : (
-        <>
-          <Header/>
-          <main className="screen">
-            <div className="screen-top-content">
-              <div className="ag-balance">
-                <Button size="sm" variant="primary" text="0 AG" />
-              </div>
+      <>
+        <Header />
+        <main className="screen">
+          <div className="screen-top-content">
+            <div className="ag-balance">
+              <Button size="sm" variant="primary" text="0 AG" />
             </div>
-            {children}
-          </main>
-        </>
-      )}
+          </div>
+          <BackgroundImage src={background} />
+          {children}
+        </main>
+      </>
       <NotificationContainer />
+      
     </LayoutWrapper>
   );
 }

@@ -1,4 +1,4 @@
-import { white, black, blue, pink, yellow, green, grey, red, boxShadow } from './colors'
+import { white, black, blue, pink, yellow, green, agGreen, darkGreen, red, boxShadow, CardColor } from './colors'
 
 const theme = {
   borderRadius: 2,
@@ -6,14 +6,16 @@ const theme = {
     mobile: 400,
   },
   color: {
-    textPrimary: grey[100],
+    layoutColor: darkGreen,
+    textPrimary: agGreen[100],
     textSecondary: white,
-    bgPrimary: grey[200],
-    bgSecondary: grey[100],
+    bgPrimary: agGreen[100],
+    bgSecondary: agGreen[200],
     bgWhite: white,
+    CardColor: CardColor,
     white,
     black,
-    grey,
+    agGreen,
     blue,
     pink,
     yellow,
