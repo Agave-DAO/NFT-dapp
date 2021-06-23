@@ -4,6 +4,7 @@ import { Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../../assets/image/logo.svg';
+import ConnectAccountButton from '../ConnectAccountButton';
 
 const HeaderWrapper = styled.div`
   border-bottom: 1px solid #414250;
@@ -14,7 +15,7 @@ const HeaderWrapper = styled.div`
     padding: 0 1rem;
 
     .navbar-brand {
-      color: ${props => props.theme.color.textSecondary};
+      color: ${props => props.theme.color.bgPrimary};
       font-weight: bold;
 
       a {
@@ -40,14 +41,15 @@ const HeaderWrapper = styled.div`
         align-items: center;
         height: 100%;
         .menuItem {
-          width: 85px;
-          margin-right: 20px;
+          width: 100%;
+          margin: 0 20px;
           color: ${props => props.theme.color.textSecondary};
           text-align: center;
           height: 100%;
           display: flex;
           align-items: center;
           justify-content: center;
+          white-space: nowrap;
   
           &:hover {
             text-decoration: none;
@@ -60,18 +62,19 @@ const HeaderWrapper = styled.div`
         }
   
         .connect-btn {
-          width: 100px;
+          width: 150px;
           height: 32px;
           display: flex;
           align-items: center;
           justify-content: center;
           background: ${props => props.theme.color.bgSecondary};
+          border-radius: 5px;
           border: 1px solid transparent;
           color: ${props => props.theme.color.textSecondary};
           cursor: pointer;
           font-size: 14px;
           transition: 0.3s;
-  
+          padding: 0 10px;
           &:hover {
             border: 1px solid ${props => props.theme.color.white};
           }
@@ -81,6 +84,11 @@ const HeaderWrapper = styled.div`
   }
 `;
 
+
+
+const onConnectAccount = () => {
+  alert('connecting account');
+}
 function Header() {
   const address = useSelector(state => state.authUser.address);
 
@@ -96,36 +104,24 @@ function Header() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse>
           <Nav>
+            <NavLink
+              to='/my-dash'
+              className="menuItem"
+            >
+              MY DASHBOARD
+            </NavLink>
             <NavLink 
               to='/nfts'
               className="menuItem"
              >NFT DROPS
             </NavLink>
             <NavLink
-              to='/markets'
+              to='/stake'
               className="menuItem"
             >
-              MARKETS
+              STAKE
             </NavLink>
-            <NavLink
-              to='/dashboard'
-              className="menuItem"
-            >
-              DASHBOARD
-            </NavLink>
-            <NavLink
-              to='/deposit'
-              className="menuItem"
-            >
-              DEPOSIT
-            </NavLink>
-            <NavLink
-              to='/borrow'
-              className="menuItem"
-            >
-              BORROW
-            </NavLink>
-            <div className="connect-btn">{`${address.substring(0, 4)}...${address.substring(address.length - 4, address.length)}`}</div>
+            <div className="connect-btn">{ address ? `${address.substring(0, 4)}...${address.substring(address.length - 4, address.length)}` : <ConnectAccountButton /> }</div>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const PageHeadline = styled.div`
-    border: 1px solid #1d1e29;
+    border: 1px solid ${(props) => props.theme.color.agGreen[100]};
     color: white;
     padding: 32px 42px;
     line-height: 34px;
@@ -10,7 +10,7 @@ const PageHeadline = styled.div`
     h1 {
         font-size: 24px;
     }
-    background: #1d1e29;
+    background: ${(props) => props.theme.color.agGreen[100]};
 `;
 const Styled = {
     PageHeadline,  

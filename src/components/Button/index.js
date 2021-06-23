@@ -11,19 +11,28 @@ const Button = ({
   text,
   to,
   variant,
+  borderRadius,
 }) => {
   const { color } = useContext(ThemeContext);
-
+  console.log(color)
   let buttonColor;
   let borderColor;
   let backgroundColor;
   let boxShadow;
   let opacity;
+  let backgroundImage;
   switch (variant) {
+    case 'gradient':
+      buttonColor = color.black;
+      borderColor = 'transparent';
+      backgroundImage = 'linear-gradient(90.53deg, #9BEFD7 0%, #8BF7AB 47.4%, #FFD465 100%);';
+      boxShadow = `${color.pink} 0px 1px 3px 0px;`;
+      opacity = '1';
+      break;
     case 'secondary':
       buttonColor = color.white;
       borderColor = 'transparent';
-      backgroundColor = color.pink;
+      backgroundColor = color.bgSecondary;
       boxShadow = `${color.pink} 0px 1px 3px 0px;`;
       opacity = '1';
       break;
@@ -63,7 +72,6 @@ const Button = ({
       height = 32;
       fontSize = 12;
   }
-
   const ButtonChild = useMemo(() => {
     if (to) {
       return <StyledLink to={to}>{text}</StyledLink>
@@ -80,12 +88,14 @@ const Button = ({
       color={buttonColor}
       borderColor={borderColor}
       backgroundColor={backgroundColor}
+      backgroundImage={backgroundImage}
       disabled={disabled}
       fontSize={fontSize}
       onClick={onClick}
       height={height}
       width={width}
       opacity={opacity}
+      borderRadius={borderRadius}
     >
       {children}
       {ButtonChild}
@@ -94,7 +104,20 @@ const Button = ({
 }
 
 const StyledButton = styled.div`
-  background-color: ${props => props.backgroundColor};
+  background-color: ${props => { 
+    if (props.backgroundImage){
+      return 'unset';
+    } else{
+      return props.backgroundColor;
+    }
+  }};
+  background-image: ${(props) => {
+    if (!props.backgroundImage) {
+      return 'unset';
+    } else {
+      return props.backgroundImage;
+    }
+  }}
   border: 1px solid transparent;
   border-radius: ${props => props.borderRadius};
   box-shadow: none;

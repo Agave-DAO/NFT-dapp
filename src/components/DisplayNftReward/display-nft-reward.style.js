@@ -6,12 +6,12 @@ const DisplayRewardsCard =  styled.div`
     justify-self: center;
     flex-direction: column;
     text-align: center;
-    border: 1px solid black;
+    border: 1px solid ${(props) => props.theme.color.agGreen[100]};
     border-radius: 12px;
     padding: 50px 75px;
-    margin: 50px;
+    margin-top: 150px;
     color: white;
-    background-color: black;
+    background-color: ${(props) => props.theme.color.agGreen[100]};
     > * {
       margin: 8px auto;
     }
